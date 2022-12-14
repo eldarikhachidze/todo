@@ -1,0 +1,41 @@
+<div>
+  <form [formGroup]="form" (submit)="submit()">
+    <div class="mb-3">
+      <label for="title" class="form-label">Title</label>
+      <input type="email" class="form-control" id="title" formControlName="title">
+      <div *ngIf="form.get('title')?.invalid && form.get('title')?.touched" style="display:block" class="invalid-feedback">
+        You must agree before submitting.
+      </div>
+      <label for="description" class="form-label">Description</label>
+      <textarea type="email" class="form-control" id="description" formControlName="description"></textarea>
+      <div *ngIf="form.get('description')?.invalid && form.get('description')?.touched" style="display:block" class="invalid-feedback">
+        You must agree before submitting.
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="dueDate" class="form-label">Due Date</label>
+      <textarea type="date" class="form-control" id="dueDAte" formControlName="dueDate"></textarea>
+      <div *ngIf="form.get('dueDate')?.invalid && form.get('dueDate')?.touched" style="display:block" class="invalid-feedback">
+        You must agree before submitting.
+      </div>
+    </div>
+
+      <div class="mb-3">
+        <label for="responsiblePersonId" class="form-label">Responsible PersonId</label>
+        <select class="form-select" id="responsiblePersonId" aria-label="Default select example"
+                formControlName="responsiblePersonId">
+          <ng-container *ngFor="let persons of persons">
+            <option [value]="persons.id">{{persons.fullName}}</option>
+          </ng-container>
+
+
+        </select>
+
+        <div>
+          <button type="submit" class="btn btn-primary">{{todoId ? 'Update Todo': 'Create Todo'}}</button>
+        </div>
+      </div>
+  </form>
+  </div>
+
+
